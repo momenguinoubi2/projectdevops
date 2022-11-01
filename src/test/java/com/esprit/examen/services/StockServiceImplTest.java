@@ -1,20 +1,24 @@
-/*package com.esprit.examen.services;
+package com.esprit.examen.services;
 
-import static org.junit.Assert.*;
-import java.util.List;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import com.esprit.examen.entities.Stock;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StockServiceImplTest {
-	@Autowired
-	IStockService stockService;
 	
+    @Autowired
+	 IStockService stockService;
 	@Test
 	public void testAddStock() {
 	//	List<Stock> stocks = stockService.retrieveAllStocks();
@@ -49,4 +53,3 @@ public class StockServiceImplTest {
 	}
 
 }
-*/

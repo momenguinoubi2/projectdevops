@@ -8,9 +8,9 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
         echo 'checkout stage'
            }
             }
-           stage ('MVN BUILD') {
+         /*  stage ('MVN BUILD') {
       steps {
-        sh 'mvn -DskipTests clean package'
+        sh 'mvn clean package'
         echo 'Build stage done'
       }
     }
@@ -26,7 +26,7 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
       steps {
         sh 'mvn test'
       }
-    }
+    }*/
     
      stage ('STATIC TEST WITH SONAR') {
        steps {

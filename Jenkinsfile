@@ -1,0 +1,62 @@
+pipeline {
+    agent any
+    stages{
+            stage ('Checkout GIT'){
+                steps {
+                    echo 'pulling... ';
+                        git branch :'rania',
+                        url : 'https://github.com/momenguinoubi2/projectdevops.git';
+                }
+            }
+           stage ('MVN BUILD') {
+      steps {
+        sh 'mvn clean package'
+        echo 'Build stage done'
+      }
+    }
+  
+    stage ('MVN COMPILE') {
+      steps {
+        sh 'mvn compile'
+        echo 'compile stage done'
+
+      }
+    }
+     stage ('MVN TEST') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+    
+     stage ('STATIC TEST WITH SONAR') {
+       steps {
+       withSonarQubeEnv('sonarqube-8.9.7-community') { 
+                sh 'mvn sonar:sonar'
+        }
+      }
+    }
+  
+   stage ('NEXUS DEPLOY') {
+       steps {
+       sh 'mvn deploy -DskipTests'
+        
+      }
+    }
+    stage ('upload project to nexus'){
+    steps {
+           nexusArtifactUploader artifacts: [
+           [artifactId: 'spring-boot-starter-parent',
+            classifier: '', 
+            file: 'projectdevops/target/spring-boot-starter-2.5.3.$[POM_PACKGING]', 
+            type: '$[POM_PACKGING]']
+            ],
+             credentialsId: 'nexus', 
+             groupId: 'org.springframework.boot', 
+             nexusUrl: '192.168.1.12:8081',
+              nexusVersion: 'nexus2',
+               protocol: 'http',
+                repository: 'maven-release',
+                 version: '2.5.3'
+    }
+    }
+ }

@@ -57,6 +57,6 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
                protocol: 'http',
                 repository: 'maven-release',
                  version: '2.5.3'
-    }
+    }}
     }
  }

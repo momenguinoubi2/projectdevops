@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Cloning Project"){
             steps {
-                git 'https://github.com/momenguinoubi2/projectdevops.git'
+                git 'https://github.com/FediAbdelkebir/PentaCoders.git'
             }
         }
         stage("Build Project"){

@@ -8,23 +8,23 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
         echo 'checkout stage'
            }
             }
-           stage ('MVN BUILD') {
+           stage ('MVN clean') {
       steps {
-        sh 'mvn clean package'
+        sh 'mvn clean -e'
         echo 'Build stage done'
       }
     }
   
-    stage ('MVN COMPILE') {
+    stage ('MVN build') {
       steps {
-        sh 'mvn compile'
+        sh 'mvn compile -e'
         echo 'compile stage done'
 
       }
     }
      stage ('MVN TEST') {
       steps {
-        sh 'mvn test'
+        sh 'mvn test -e'
       }
     }
     

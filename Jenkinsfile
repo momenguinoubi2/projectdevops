@@ -2,11 +2,12 @@ pipeline {
     agent any
     stages{
             stage ('Checkout GIT'){
-                steps {
-                    echo 'pulling... ';
-                        git branch :'rania',
-                        url : 'https://github.com/momenguinoubi2/projectdevops.git';
-                }
+               steps {
+        git branch : 'oussema',
+        url: 'https://github.com/momenguinoubi2/projectdevops.git',
+       
+        echo 'checkout stage'
+           }
             }
            stage ('MVN BUILD') {
       steps {

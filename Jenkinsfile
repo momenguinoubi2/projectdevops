@@ -10,7 +10,7 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
             }
            stage ('MVN BUILD') {
       steps {
-        sh 'mvn clean package'
+        sh 'mvn -DskipTests clean package'
         echo 'Build stage done'
       }
     }

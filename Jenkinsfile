@@ -3,7 +3,7 @@ pipeline {
     stages{
             stage ('Checkout GIT'){
                steps {
-        git branch : 'oussema',
+        git branch : 'rania',
         url: 'https://github.com/momenguinoubi2/projectdevops.git',
        
         echo 'checkout stage'

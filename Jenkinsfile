@@ -22,11 +22,11 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
 
       }
     }
-     stage ('MVN TEST') {
+     /*stage ('MVN TEST') {
       steps {
         sh 'mvn test -e'
       }
-    }
+    }*/
     
      stage ('STATIC TEST WITH SONAR') {
        steps {

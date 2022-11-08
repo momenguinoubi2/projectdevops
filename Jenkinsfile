@@ -34,14 +34,14 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
                 sh 'mvn sonar:sonar'
         }
       }
-    }*/
+    }
   
    stage ('NEXUS DEPLOY') {
        steps {
        sh 'mvn deploy -DskipTests'
         
       }
-    }
+    }*/
     stage ('upload project to nexus'){
     steps {
            nexusArtifactUploader artifacts: [

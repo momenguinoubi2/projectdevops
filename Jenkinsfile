@@ -28,13 +28,13 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
       }
     }*/
     
-     stage ('STATIC TEST WITH SONAR') {
+     /*stage ('STATIC TEST WITH SONAR') {
        steps {
        withSonarQubeEnv('sonarqube-8.9.7-community') { 
                 sh 'mvn sonar:sonar'
         }
       }
-    }
+    }*/
   
    stage ('NEXUS DEPLOY') {
        steps {

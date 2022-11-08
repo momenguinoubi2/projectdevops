@@ -26,7 +26,7 @@ pipeline {
         stage("SonarQube Analysis") {
             agent any  
             steps {
-              sh 'mvn sonar:sonar -Dsonar.login=f43d3ff922968a6e9089e3b01df4469d69c1c59b -Dsonar.password=momen'
+              sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=momen -Dsonar.java.binaries=target/classes' 
             }
           }
        // stage("Unit Test"){

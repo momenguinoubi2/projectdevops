@@ -1,5 +1,13 @@
 pipeline {
     agent any
+     environnement {
+     NEXUS_VERSION="nexus3"
+     NEXUS_PROTOCOL="http"
+     NEXUS_URL="192.168.1.12:8081"
+     NEXUS_REPOSITORY="maven-release"
+     NEXUS_CREDENTIAL_ID="nexus"
+     registry="momenguinoubi2/projectdevops"
+ }
     stages{
             stage ('Checkout GIT'){
                steps {
@@ -42,21 +50,43 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
         
       }
     }*/
-    stage ('upload project to nexus'){
-    steps {
-           nexusArtifactUploader artifacts: [
-           [artifactId: 'spring-boot-starter-parent',
-            classifier: '', 
-            file: 'projectdevops/target/spring-boot-starter-parent-2.5.3.jar', 
-            type: 'jar']
-            ],
-             credentialsId: 'nexus', 
-             groupId: 'org.springframework.boot', 
-             nexusUrl: '192.168.1.12:8081',
-              nexusVersion: 'nexus2',
-               protocol: 'http',
-                repository: 'maven-release',
-                 version: '2.5.3'
-    }}
+   
+
+ stage ("upload nexus"){
+steps {
+script {
+pom = readMavenPom file: "pom.xml";
+                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
+                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
+                    artifactPath = filesByGlob[0].path;
+                    artifactExists = fileExists artifactPath;
+                    if(artifactExists) {
+                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+                        nexusArtifactUploader(
+                            nexusVersion: NEXUS_VERSION,
+                            protocol: NEXUS_PROTOCOL,
+                            nexusUrl: NEXUS_URL,
+                            groupId: pom.groupId,
+                            version: pom.version,
+                            repository: NEXUS_REPOSITORY,
+                            credentialsId: NEXUS_CREDENTIAL_ID,
+                            artifacts: [
+                                [artifactId: pom.artifactId,
+                                classifier: '',
+                                file: artifactPath,
+                                type: pom.packaging],
+                                [artifactId: pom.artifactId,
+                                classifier: '',
+                                file: "pom.xml",
+                                type: "pom"]
+                            ]
+                        );
+                    } else {
+                        error "*** File: ${artifactPath}, could not be found";
+                    }
+}
+}
+
+}
     }
  }

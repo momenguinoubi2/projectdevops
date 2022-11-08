@@ -38,7 +38,7 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
   
    stage ('NEXUS DEPLOY') {
        steps {
-       sh 'mvn deploy -DskipTests'
+       bat 'mvn deploy -DskipTests'
         
       }
     }*/

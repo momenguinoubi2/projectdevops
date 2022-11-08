@@ -47,8 +47,8 @@ url: 'https://github.com/momenguinoubi2/projectdevops.git'
            nexusArtifactUploader artifacts: [
            [artifactId: 'spring-boot-starter-parent',
             classifier: '', 
-            file: 'projectdevops/target/spring-boot-starter-2.5.3.war', 
-            type: 'war']
+            file: 'projectdevops/target/spring-boot-starter-2.5.3.jar', 
+            type: 'jar']
             ],
              credentialsId: 'nexus', 
              groupId: 'org.springframework.boot', 

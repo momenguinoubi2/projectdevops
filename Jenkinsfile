@@ -8,9 +8,17 @@ pipeline {
                 echo 'checkout stage'
             }
         }
+        
+        stage ('MVN clean') {
+      steps {
+        sh 'mvn clean -e'
+        echo 'Build stage done'
+      }
+    }
         stage("Build Project"){
             steps {
-                sh 'mvn compile'
+                 sh 'mvn compile -e'
+                  echo 'compile stage done'
             }
         }
        // stage("Unit Test"){

@@ -4,7 +4,7 @@ pipeline {
         stage("Cloning Project"){
             steps {
             git branch: 'momen', 
-                git 'https://github.com/momenguinoubi2/projectdevops.git',
+                git 'https://github.com/momenguinoubi2/projectdevops.git'
                 echo 'checkout stage'
             }
         }

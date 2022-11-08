@@ -15,56 +15,58 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.entities.Produit;
-import com.esprit.examen.services.IProduitService;
+import com.esprit.examen.repositories.FournisseurRepository;
+import com.esprit.examen.services.IFournisseurService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class ProduitServiceImplTest {
+public class FournisseurServiceImplTest {
 	@Autowired
-	IProduitService service;
-	
+	IFournisseurService service;
 	@Test
-	public void testAddProduit() throws ParseException {
+	public void testAddFournisseur() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date datecreation = dateFormat.parse("30/09/2000");
 		Date datemodif = dateFormat.parse("30/09/2000");
 
 	//	List<Stock> stocks = stockService.retrieveAllStocks();
 	//	int expected=stocks.size();
-		Produit p = new Produit(null, "322","ezzeze",4, datecreation, datemodif, null, null, null );
-		Produit savedProduit= service.addProduit(p);
+		Fournisseur f = new Fournisseur(null,"eed","sfsdf",null,null,null,null );
+		Fournisseur savedFournisseur= service.addFournisseur(f);
 		
 	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
-		assertNotNull(savedProduit.getIdProduit());
-		service.deleteProduit(savedProduit.getIdProduit());
+		assertNotNull(savedFournisseur.getLibelle());
+		service.deleteFournisseur(savedFournisseur.getIdFournisseur());
 		
 	} 
 	@Test
-	public void testDeleteProduit() throws ParseException {
+	public void testDeleteFournisseur() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date datecreation = dateFormat.parse("30/09/2000");
 		Date datemodif = dateFormat.parse("30/09/2000");
-		Produit p = new Produit(null, "322","ezzeze",4, datecreation, datemodif, null, null, null );
-		Produit produit = service.addProduit(p);
-		service.deleteProduit(produit.getIdProduit());
-		assertNull(service.retrieveProduit(produit.getIdProduit()));
+		Fournisseur f = new Fournisseur(null,"eed","sfsdf",null,null,null,null );
+		Fournisseur savedFournisseur= service.addFournisseur(f);
+		service.deleteFournisseur(savedFournisseur.getIdFournisseur());
+		assertNull(service.retrieveFournisseur(savedFournisseur.getIdFournisseur()));
 	}
 	@Test
-	public void testRetrieveAllProduits() throws ParseException {
+	public void testRetrieveFournisseurs() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date datecreation = dateFormat.parse("30/09/2000");
 		Date datemodif = dateFormat.parse("30/09/2000");
-		List<Produit> produits = service.retrieveAllProduits();
-		int expected = produits.size();
-		Produit p = new Produit(null, "322","ezzeze",4, datecreation, datemodif, null, null, null );
+		List<Fournisseur> fournisseur = service.retrieveAllFournisseurs();
+		int expected = fournisseur.size();
+		Fournisseur f = new Fournisseur(null,"eed","sfsdf",null,null,null,null );
 
-		Produit produit = service.addProduit(p);
-		assertEquals(expected + 1, service.retrieveAllProduits().size());
-		service.deleteProduit(produit.getIdProduit());
+		Fournisseur Fournisseur = service.addFournisseur(f);
+		assertEquals(expected + 1, service.retrieveAllFournisseurs().size());
+		service.deleteFournisseur(Fournisseur.getIdFournisseur());
 
 	}
+
 }

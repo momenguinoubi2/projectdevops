@@ -15,12 +15,20 @@ pipeline {
         echo 'Build stage done'
       }
     }
+    
         stage("Build Project"){
             steps {
                  sh 'mvn compile -X -e'
                   echo 'compile stage done'
             }
         }
+        
+        stage("SonarQube Analysis") {
+            agent any  
+            steps {
+              sh 'mvn sonar:sonar'
+            }
+          }
        // stage("Unit Test"){
          //   steps {
            //     sh 'mvn test'

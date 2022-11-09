@@ -26,7 +26,7 @@ pipeline {
         stage("SonarQube Analysis") {
             agent any  
             steps {
-              sh 'mvn sonar:sonar Dmaven.test.skip-true -e'
+              sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.112:9000  Dmaven.test.skip-true -e'
             }
           }
        // stage("Unit Test"){

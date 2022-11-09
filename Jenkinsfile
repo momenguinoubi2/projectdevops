@@ -26,7 +26,7 @@ pipeline {
         stage("SonarQube Analysis") {
             agent any  
             steps {
-              sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.112:9000  -Dsonar.login=admin -Dsonar.password=momen -Dsonar.java.binaries=target/classes Dmaven.test.skip-true -e'
+              sh 'mvn sonar:sonar -Dsonar.projectKey=projetachat -Dsonar.host.url=http://192.168.1.112:9000 -Dsonar.login=7ea7804d15c1be815311a98d2c17bd0bfc193e12'
             }
           }
        // stage("Unit Test"){

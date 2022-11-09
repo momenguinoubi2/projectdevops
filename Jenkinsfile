@@ -26,7 +26,7 @@ pipeline {
         stage("SonarQube Analysis") {
             agent any  
             steps {
-                    withSonarQubeEnv('sonarqube-8.9'){
+                    withSonarQubeEnv('sonarqube-8.9.7'){
                       sh 'mvn sonar:sonar -Dsonar.projectKey=projetachat -Dsonar.host.url=http://192.168.1.112:9000 -Dsonar.login=7ea7804d15c1be815311a98d2c17bd0bfc193e12'
                }
             }

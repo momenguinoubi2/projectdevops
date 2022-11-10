@@ -88,12 +88,12 @@ steps{
 sh 'docker build -t arafarania/tpachat:1.0.0 .'
 }
 }
-stage('Login to Docker Hub') {         
-      steps{                            
-	sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR '                 
-	echo 'Login Completed'                
-      }           
-    }               
+stage('Login to Docker Hub') {      	
+    steps{                       	
+	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
+	echo 'Login Completed'      
+    }           
+}              
     /*stage('Push Image to Docker Hub') {         
       steps{                            
 	sh 'sudo docker push dockerhubusername/dockerhubreponame:$BUILD_NUMBER'                 echo 'Push Image Completed'       

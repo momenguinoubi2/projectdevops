@@ -1,5 +1,8 @@
 pipeline { 
     agent any
+    
+    
+    
     environment {
         // This can be nexus3 or nexus2
         NEXUS_VERSION = "nexus3"
@@ -11,9 +14,13 @@ pipeline {
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus"
-           DOCKERHUB_CREDENTIALS= credentials('dockerhub') 
+        
+        DOCKERHUB_CREDENTIALS= credentials('dockerhub') 
         
     }
+    
+    
+    
     stages {
         stage("Cloning Project"){
             steps {
@@ -55,7 +62,7 @@ pipeline {
                 }
             }
         }
-          stage("publish to nexus") {
+           stage("publish to nexus") {
             steps {
                 script {
                     // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
@@ -100,16 +107,4 @@ pipeline {
                     }
                 }
             }}
-          
-       // stage("Unit Test"){
-         //   steps {
-           //     sh 'mvn test'
-          //  }
-        //}
-        //stage("Packaging Project"){
-          //  steps {
-            //    sh 'mvn package'
-            //}
-        //}
-    }
 }

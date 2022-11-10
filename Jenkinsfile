@@ -15,8 +15,7 @@ pipeline {
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus"
-            registryCredential = 'dockerhubCredential'
-        dockerImage = ''
+           DOCKERHUB_CREDENTIAL= credentials('dockerhubaCredential')  
         
     }
 
@@ -89,14 +88,11 @@ steps{
 sh 'docker build -t arafarania/tpachat:1.0.0 .'
 }
 }
- stage('Upload Image') {
-     steps{    
-         script {
-            docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-            }
-        }
-      }
-    }
+ stage('Login to Docker Hub') {         
+      steps{                            
+	sh 'echo $DOCKERHUB_CREDENTIAL_PSW | sudo docker login -u $DOCKERHUB_CREDENTIAL_USR --password-stdin'                 
+	echo 'Login Completed'                
+      }           
+    }        
     }
 }

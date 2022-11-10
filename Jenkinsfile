@@ -97,7 +97,7 @@ stage('Login to Docker Hub') {
 }              
     stage('Push Image to Docker Hub') {         
       steps{                            
-	sh 'docker push dockerhubusername/dockerhubreponame:$BUILD_NUMBER'         
+	sh 'docker push arafarania/tpachat:$BUILD_NUMBER'         
 	        echo 'Push Image Completed'       
       }           
     }      

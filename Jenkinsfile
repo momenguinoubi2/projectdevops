@@ -90,8 +90,8 @@ sh 'docker build -t arafarania/tpachat:1.0.0 .'
 }
 stage('Login to Docker Hub') {      	
     steps{                       	
-	sh '''docker login -u AWS https://<<account-id>>.dkr.ecr.<<region>>.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)'''
-               		
+	   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p ${DOCKERHUB_CREDENTIALS_PSW} ${DOCKERHUB_CREDENTIALS_REPOSITORY} '        
+                   		
 	echo 'Login Completed'      
     }           
 }              

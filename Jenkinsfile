@@ -97,7 +97,7 @@ stage('Login to Docker Hub') {
 }              
     stage('Push Image to Docker Hub') {         
       steps{                            
-	sh 'docker push arafarania/tpachat:$BUILD_NUMBER'         
+	sh 'docker push arafarania/tpachat:1.0.0'         
 	        echo 'Push Image Completed'       
       }           
     }      

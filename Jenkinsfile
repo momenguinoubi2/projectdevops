@@ -10,7 +10,7 @@ pipeline {
         // This can be http or https
         NEXUS_PROTOCOL = "http"
         // Where your Nexus is running
-        NEXUS_URL = "192.168.1.190:8081"
+        NEXUS_URL = "192.168.1.12:8081"
         // Repository where we will upload the artifact
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
@@ -90,7 +90,8 @@ sh 'docker build -t arafarania/tpachat:1.0.0 .'
 }
 stage('Login to Docker Hub') {      	
     steps{                       	
-	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
+	sh '''docker login -u AWS https://<<account-id>>.dkr.ecr.<<region>>.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)'''
+               		
 	echo 'Login Completed'      
     }           
 }              

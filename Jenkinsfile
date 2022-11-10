@@ -97,7 +97,8 @@ stage('Login to Docker Hub') {
 }              
     stage('Push Image to Docker Hub') {         
       steps{                            
-	sh 'sudo docker push dockerhubusername/dockerhubreponame:$BUILD_NUMBER'                 echo 'Push Image Completed'       
+	sh 'docker push dockerhubusername/dockerhubreponame:$BUILD_NUMBER'         
+	        echo 'Push Image Completed'       
       }           
     }      
     }

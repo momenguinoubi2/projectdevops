@@ -10,13 +10,13 @@ pipeline {
         // This can be http or https
         NEXUS_PROTOCOL = "http"
         // Where your Nexus is running
-        NEXUS_URL = "192.168.1.12:8081"
+        NEXUS_URL = "192.168.1.190:8081"
         // Repository where we will upload the artifact
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus"
-            //registryCredential = 'dockerhubCredential'
-        //dockerImage = ''
+            registryCredential = 'dockerhubCredential'
+        dockerImage = ''
         
     }
 
@@ -89,10 +89,14 @@ steps{
 sh 'docker build -t arafarania/tpachat:1.0.0 .'
 }
 }
-  stage('Push image') {
-        withDockerRegistry([ credentialsId: "dockerhubCredential", url: "" ]) {
-        dockerImage.push()
+ stage('Upload Image') {
+     steps{    
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+            }
         }
-    }  
+      }
+    }
     }
 }

@@ -13,7 +13,7 @@ pipeline {
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus"
            
-        DOCKERHUB_CREDENTIALS= credentials('dockerhub') 
+       // DOCKERHUB_CREDENTIALS= credentials('dockerhub') 
         
     }
     

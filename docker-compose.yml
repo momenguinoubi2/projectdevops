@@ -1,7 +1,26 @@
 version: "3.8"
 
 services:
-  mysqldb:
+ sonarqube:
+    build:
+      context: sonarqube/
+    ports:
+      - 9000:9000
+      - 9092:9092
+    container_name: sonarqube
+ jenkins:
+    build:
+      context: jenkins/
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    container_name: jenkins
+    volumes:
+      - /tmp/jenkins:/var/jenkins_home #Remember that, the tmp directory is designed to be wi$  
+      - /var/run/docker.sock:/var/run/docker.sock
+ mysqldb:
     image: mysql:5.7
     restart: unless-stopped
     env_file: ./.env
@@ -12,9 +31,10 @@ services:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
-  app:
+ app:
     depends_on:
       - mysqldb
+      - sonarqube
     build: ./spring-app
     restart: on-failure
     env_file: ./.env

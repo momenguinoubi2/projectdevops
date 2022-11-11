@@ -107,7 +107,12 @@ stage('Login to Docker Hub') {
      sh 'mvn sonar:sonar -Dsonar.projectKey=jenkins-pipeline -Dsonar.host.url=http://192.168.1.190:9000 -Dsonar.login=9b6d9861abc12d783cf5c0fba5227ee4f93f7781 -Dsonar.exclusions=**/*.java'           
            }
           }
-          
+           stage("docker compose")
+          {
+              steps{
+                  sh'docker-compose up -d'
+              }
+          } 
          
     }
 }

@@ -28,7 +28,7 @@ services:
  app:
     depends_on:
       - mysqldb
-      - sonarqube
+    
     build: ./spring-app
     restart: on-failure
     env_file: ./.env

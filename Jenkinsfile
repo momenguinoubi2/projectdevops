@@ -11,7 +11,7 @@ pipeline {
         // Repository where we will upload the artifact
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
-        NEXUS_CREDENTIAL_ID = "Nexus"
+        NEXUS_CREDENTIAL_ID = "nexus"
            
        // DOCKERHUB_CREDENTIALS= credentials('dockerhub') 
         

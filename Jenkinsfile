@@ -64,22 +64,22 @@ pipeline {
                 script {
                     // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
                     pom = readMavenPom file: "pom.xml";
-                    echo'part1'
+                    echo'part1';
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
-                    echo'part2'
+                    echo'part2';
                     // Print some info from the artifact found
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
-                    echo'part3'
+                    echo'part3';
                     // Extract the path from the File found
                     artifactPath = filesByGlob[0].path;
-                    echo'part4'
+                    echo'part4';
                     // Assign to a boolean response verifying If the artifact name exists
                     artifactExists = fileExists artifactPath;
-					echo'part5'
+					echo'part5';
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
-
+						echo"'NEXUS_CREDENTIAL_ID'"
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
                             protocol: NEXUS_PROTOCOL,

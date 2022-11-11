@@ -11,7 +11,7 @@ pipeline {
         // Repository where we will upload the artifact
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
-        NEXUS_CREDENTIAL_ID = "nexus"
+        NEXUS_CREDENTIAL_ID = "eee"
            
        // DOCKERHUB_CREDENTIALS= credentials('dockerhub') 
         
@@ -102,7 +102,7 @@ pipeline {
                                 type: "pom"]
                             ]
                         );
-
+						
                     } else {
                         error "*** File: ${artifactPath}, could not be found";
                     }

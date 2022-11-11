@@ -34,7 +34,7 @@ services:
     depends_on:
       - mysqldb
     
-    build: ./spring-app
+   
     restart: on-failure
     env_file: ./.env
     ports:

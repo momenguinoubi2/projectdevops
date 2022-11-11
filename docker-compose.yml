@@ -14,9 +14,16 @@ services:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
-
+ nexus:
+     image: sonatype/nexus3.0
+     ports:
+     - "8081:8081"
+     volumes:
+     - nexus-data:/nexus-data
 volumes:
   sonarqube_bundled-plugins:
   sonarqube_conf:
   sonarqube_data:
   sonarqube_extensions:
+  nexus-data:
+  

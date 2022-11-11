@@ -79,7 +79,7 @@ pipeline {
 					echo'part5';
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
-						echo"'NEXUS_CREDENTIAL_ID'"
+						echo"${NEXUS_CREDENTIAL_ID}"
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
                             protocol: NEXUS_PROTOCOL,

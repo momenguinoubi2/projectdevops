@@ -9,9 +9,10 @@ services:
       - 9092:9092
     container_name: sonarqube
     volumes:
-      - 'SonarQube_data:/opt/SonarQube/data'
-      - 'SonarQube_extensions:/opt/SonarQube/extensions'
-      - 'SonarQube_logs:/opt/SonarQube/logs'
+      - sonarqube_conf:/opt/sonarqube/conf
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
  jenkins:
     build:
       context: jenkins/

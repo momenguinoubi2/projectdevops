@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class FactureServiceImplTest {
+class FactureServiceImplTest {
 
 	FactureRepository factureRepository = Mockito.mock(FactureRepository.class);
 	@InjectMocks
@@ -41,7 +41,7 @@ public class FactureServiceImplTest {
 	};
 
 	@Test
-	public void addFactureTest() {
+	void addFactureTest() {
 		Mockito.when(factureRepository.save(Mockito.any(Facture.class))).then(invocation -> {
 			Facture model = invocation.getArgument(0, Facture.class);
 			model.setIdFacture((long) 1);
@@ -54,7 +54,7 @@ public class FactureServiceImplTest {
 	}
 
 	@Test
-	public void retrieveAllFactures() {
+	void retrieveAllFactures() {
 		Mockito.when(factureRepository.findAll()).thenReturn(list);
 		List<Facture> factures = factureService.retrieveAllFactures();
 		assertNotNull(factures);
@@ -64,7 +64,7 @@ public class FactureServiceImplTest {
 	}
 
 	@Test
-	public void retrieveFactureTest() {
+	void retrieveFactureTest() {
 		Mockito.when(factureRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(f));
 		Facture facture = factureService.retrieveFacture((long) 1);
 		assertNotNull(facture);

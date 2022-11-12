@@ -15,13 +15,13 @@ import com.esprit.examen.entities.Stock;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class StockServiceImplTest {
+class StockServiceImplTest {
 
 	@Autowired
 	IStockService stockService;
 
 	@Test
-	public void testAddStock() {
+	void testAddStock() {
 		// List<Stock> stocks = stockService.retrieveAllStocks();
 		// int expected=stocks.size();
 		Stock s = new Stock("stock test", 10, 100);
@@ -34,7 +34,7 @@ public class StockServiceImplTest {
 	}
 
 	@Test
-	public void testAddStockOptimized() {
+	void testAddStockOptimized() {
 
 		Stock s = new Stock("stock test", 10, 100);
 		Stock savedStock = stockService.addStock(s);
@@ -46,7 +46,7 @@ public class StockServiceImplTest {
 	}
 
 	@Test
-	public void testDeleteStock() {
+	void testDeleteStock() {
 		Stock s = new Stock("stock test", 30, 60);
 		Stock savedStock = stockService.addStock(s);
 		stockService.deleteStock(savedStock.getIdStock());

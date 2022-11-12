@@ -1,6 +1,7 @@
 package com.esprit.examen.controllers;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.services.IFournisseurService;
 
 import io.swagger.annotations.Api;
-
 
 @RestController
 @Api(tags = "Gestion des fournisseurss")
@@ -48,7 +49,6 @@ public class FournisseurRestController {
 		return fournisseur;
 	}
 
-	// http://localhost:8089/SpringMVC/fournisseur/remove-fournisseur/{fournisseur-id}
 	@DeleteMapping("/remove-fournisseur/{fournisseur-id}")
 	@ResponseBody
 	public void removeFournisseur(@PathVariable("fournisseur-id") Long fournisseurId) {
@@ -63,9 +63,10 @@ public class FournisseurRestController {
 	}
 
 	// http://localhost:8089/SpringMVC/fournisseur/assignSecteurActiviteToFournisseur/1/5
-		@PutMapping(value = "/assignSecteurActiviteToFournisseur/{idSecteurActivite}/{idFournisseur}")
-		public void assignProduitToStock(@PathVariable("idSecteurActivite") Long idSecteurActivite, @PathVariable("idFournisseur") Long idFournisseur) {
-			fournisseurService.assignSecteurActiviteToFournisseur(idSecteurActivite, idFournisseur);
-		}
+	@PutMapping(value = "/assignSecteurActiviteToFournisseur/{idSecteurActivite}/{idFournisseur}")
+	public void assignProduitToStock(@PathVariable("idSecteurActivite") Long idSecteurActivite,
+			@PathVariable("idFournisseur") Long idFournisseur) {
+		fournisseurService.assignSecteurActiviteToFournisseur(idSecteurActivite, idFournisseur);
+	}
 
 }

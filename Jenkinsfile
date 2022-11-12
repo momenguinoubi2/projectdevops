@@ -85,7 +85,7 @@ pipeline {
             }}
       stage('Building our image') {
 steps{
-sh 'docker build -t arafarania/tpachat:1.0.0 .'
+sh 'docker build -t arafarania/tpachatnv:1.0.0 .'
 }
 }
 stage('Login to Docker Hub') {      	
@@ -97,7 +97,7 @@ stage('Login to Docker Hub') {
 }              
     stage('Push Image to Docker Hub') {         
       steps{                            
-	sh 'docker push arafarania/tpachat:1.0.0'         
+	sh 'docker push arafarania/tpachatnv:1.0.0'         
 	        echo 'Push Image Completed'       
       }           
     } 

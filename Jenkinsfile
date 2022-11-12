@@ -10,7 +10,7 @@ pipeline {
         // This can be http or https
         NEXUS_PROTOCOL = "http"
         // Where your Nexus is running
-        NEXUS_URL = "192.168.1.190:8081"
+        NEXUS_URL = "192.168.1.12:8081"
         // Repository where we will upload the artifact
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
@@ -104,7 +104,7 @@ stage('Login to Docker Hub') {
      stage("SonarQube Analysis") {
             agent any  
             steps {
-     sh 'mvn sonar:sonar -Dsonar.projectKey=jenkins-pipeline -Dsonar.host.url=http://192.168.1.190:9000 -Dsonar.login=9b6d9861abc12d783cf5c0fba5227ee4f93f7781 -Dsonar.exclusions=**/*.java'           
+     sh 'mvn sonar:sonar -Dsonar.projectKey=jenkins-pipeline -Dsonar.host.url=http://192.168.1.12:9000 -Dsonar.login=9b6d9861abc12d783cf5c0fba5227ee4f93f7781 -Dsonar.exclusions=**/*.java'           
            }
           }
            stage("docker compose")

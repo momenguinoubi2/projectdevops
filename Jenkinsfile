@@ -20,15 +20,15 @@ pipeline {
                 }
             }
         }
-       // stage("Unit Test"){
-         //   steps {
-           //     sh 'mvn test'
-          //  }
-        //}
-        //stage("Packaging Project"){
-          //  steps {
-            //    sh 'mvn package'
-            //}
-        //}
+        stage("Unit Test"){
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage("Packaging Project"){
+            steps {
+            /   sh 'mvn package'
+            }
+        }
     }
 }

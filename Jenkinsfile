@@ -1,14 +1,21 @@
 pipeline { 
     agent any
-    stages {
-        stage("Cloning Project"){
-            steps {
-                git 'https://github.com/momenguinoubi2/projectdevops.git'
+     stages {
+         stage ('Checkout GIT'){
+                steps {
+                    echo 'pulling... ';
+                        git branch :'Rami',
+                        url : 'https://github.com/momenguinoubi2/projectdevops.git';
+                }
             }
-        }
-        stage("Build Project"){
+
+        stage("mvn build") {
             steps {
-                sh 'mvn compile'
+                script {
+                    // If you are using Windows then you should use "bat" step
+                    // Since unit testing is out of the scope we skip them
+                    sh "mvn package -DskipTests=true"
+                }
             }
         }
        // stage("Unit Test"){

@@ -85,21 +85,19 @@ pipeline {
             }}
       stage('Building our image') {
 steps{
-sh 'docker build -t arafarania/tpachat:1.0.0 .'
+sh 'docker build -t arafarania/tpachatnouveau:1.0.0 .'
 }
-}/*
+}
 stage('Login to Docker Hub') {      	
     steps{                       	
 	   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p ${DOCKERHUB_CREDENTIALS_PSW} ${DOCKERHUB_CREDENTIALS_REPOSITORY} '        
                    		
 	echo 'Login Completed'      
     }           
-}  */            
+}            
     stage('Push Image to Docker Hub') {         
-      steps{      sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p ${DOCKERHUB_CREDENTIALS_PSW} ${DOCKERHUB_CREDENTIALS_REPOSITORY} '        
-                   		
-	echo 'Login Completed'                              
-	sh 'docker push arafarania/tpachat:1.0.0'         
+                                  
+	sh 'docker push arafarania/tpachatnouveau:1.0.0'         
 	        echo 'Push Image Completed'       
       }           
     } 

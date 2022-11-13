@@ -108,12 +108,22 @@ stage('Login to Docker Hub') {
            }
           }*/
           
-           stage("docker compose")
+      /*     stage("docker compose")
           {
               steps{
                   sh'docker-compose up -d'
               }
           } 
+          */
+          
+stage("sonarqube") {
+            
+            
+            steps {
+             sh "chmod +x sonar.sh"  
+             sh "./sonar.sh"
+            }
+        }
          stage ('Sonar test')
          {
          steps{

@@ -66,9 +66,8 @@ public class FactureServiceImpl implements IFactureService {
 	@Override
 	public Facture retrieveFacture(Long factureId) {
 
-		Facture facture = factureRepository.findById(factureId).orElse(null);
-		log.info("facture :" + facture);
-		return facture;
+	
+		return factureRepository.findById(factureId).orElse(null);
 	}
 
 	@Override

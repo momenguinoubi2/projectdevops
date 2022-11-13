@@ -118,12 +118,7 @@ stage("sonarqube") {
              sh "./sonar.sh"
             }
         }
-         stage ('Sonar test')
-         {
-         steps{
-         sh "mvn sonar:sonar -Dmaven.test.skip=true -e"
-         }
-         }
+        
          
     }
 }

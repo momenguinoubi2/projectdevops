@@ -3,7 +3,17 @@ package com.esprit.examen.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.services.ISecteurActiviteService;
 
@@ -17,13 +27,12 @@ public class SecteurActiviteController {
 
 	@Autowired
 	ISecteurActiviteService secteurActiviteService;
-	
+
 	// http://localhost:8089/SpringMVC/secteurActivite/retrieve-all-secteurActivite
 	@GetMapping("/retrieve-all-secteurActivite")
 	@ResponseBody
 	public List<SecteurActivite> getSecteurActivite() {
-		List<SecteurActivite> list = secteurActiviteService.retrieveAllSecteurActivite();
-		return list;
+		return secteurActiviteService.retrieveAllSecteurActivite();
 	}
 
 	// http://localhost:8089/SpringMVC/secteurActivite/retrieve-secteurActivite/8
@@ -37,11 +46,10 @@ public class SecteurActiviteController {
 	@PostMapping("/add-secteurActivite")
 	@ResponseBody
 	public SecteurActivite addSecteurActivite(@RequestBody SecteurActivite sa) {
-		SecteurActivite secteurActivite = secteurActiviteService.addSecteurActivite(sa);
-		return secteurActivite;
+
+		return secteurActiviteService.addSecteurActivite(sa);
 	}
 
-	// http://localhost:8089/SpringMVC/secteurActivite/remove-secteurActivite/{secteurActivite-id}
 	@DeleteMapping("/remove-secteurActivite/{secteurActivite-id}")
 	@ResponseBody
 	public void removeSecteurActivite(@PathVariable("secteurActivite-id") Long secteurActiviteId) {
@@ -55,5 +63,4 @@ public class SecteurActiviteController {
 		return secteurActiviteService.updateSecteurActivite(secteurActivite);
 	}
 
-	
 }

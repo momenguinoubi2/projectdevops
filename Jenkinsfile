@@ -95,16 +95,16 @@ stage('Login to Docker Hub') {
 	echo 'Login Completed'      
     }           
 }            
-    stage('Push Image to Docker Hub') {         
+ /*   stage('Push Image to Docker Hub') {         
      steps{                             
 	sh 'docker push arafarania/tpachatnouveau:1.0.0'         
 	        echo 'Push Image Completed'       
       }          
-    } 
+    } */
      stage("SonarQube Analysis") {
             agent any  
             steps {
-     sh 'mvn sonar:sonar -Dsonar.projectKey=jenkins-pipeline -Dsonar.host.url=http://192.168.1.12:9000 -Dsonar.login=9b6d9861abc12d783cf5c0fba5227ee4f93f7781 -Dsonar.exclusions=**/*.java'           
+     sh 'mvn sonar:sonar -Dsonar.projectKey=tpachat -Dsonar.host.url=http://192.168.1.12:9000 -Dsonar.login=1edf14b242ec436521a880ba76e18de6ce9b41ab -Dsonar.exclusions=**/*.java'           
            }
           }
            stage("docker compose")

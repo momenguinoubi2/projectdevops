@@ -108,13 +108,13 @@ stage('Login to Docker Hub') {
            }
           }*/
           
-      /*     stage("docker compose")
+           stage("docker compose")
           {
               steps{
                   sh'docker-compose up -d'
               }
           } 
-          */
+          
           
 stage("sonarqube") {
             

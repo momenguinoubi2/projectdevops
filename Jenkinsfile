@@ -96,10 +96,10 @@ stage('Login to Docker Hub') {
     }           
 }            
     stage('Push Image to Docker Hub') {         
-                                  
+     steps{                             
 	sh 'docker push arafarania/tpachatnouveau:1.0.0'         
 	        echo 'Push Image Completed'       
-      }           
+      }          
     } 
      stage("SonarQube Analysis") {
             agent any  

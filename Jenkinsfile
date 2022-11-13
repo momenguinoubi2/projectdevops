@@ -77,7 +77,7 @@ pipeline {
                         error "*** File: ${artifactPath}, could not be found";
                     }
                 }
-        
+        }}
         
         stage('Building our image') {
 steps{

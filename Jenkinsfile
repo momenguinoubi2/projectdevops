@@ -115,9 +115,11 @@ stage('Login to Docker Hub') {
               }
           } 
          stage ('Sonar test')
-         {steps{
+         {
+         steps{
          sh "mvn sonar:sonar -Dmaven.test.skip=true -e"
          }
          }
+         
     }
 }

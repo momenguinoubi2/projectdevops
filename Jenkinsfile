@@ -104,7 +104,7 @@ stage('Login to Docker Hub') {
   stage ("docker compose down")
   {
       steps{
-      sh 'docker-compose down -d'
+      sh 'docker-compose down --remove-orphans'
       }
   }
            stage("docker compose")

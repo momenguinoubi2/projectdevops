@@ -1,10 +1,10 @@
-package com.esprit.examen.services;
+package com.esprit.examen.service;
 import org.junit.jupiter.api.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import tn.esprit.rh.achat.entities.Reglement;
-import tn.esprit.rh.achat.services.IReglementService;
+import com.esprit.examen.entities.Reglement;
+import com.esprit.examen.services.IReglementService;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;

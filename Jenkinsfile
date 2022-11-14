@@ -104,10 +104,7 @@ sh 'docker build -t ramitr/tpachat:1.0.0 .'
     stage("SonarQube Analysis") {
           agent any  
            steps {
-                     sh 'mvn sonar:sonar \
-  -Dsonar.projectKey=PROJETC_KEY_SONAR \
-  -Dsonar.host.url=http://172.20.2.128:9000 \
-  -Dsonar.login=1191c89568b3676f3db665894bfcc86a8efde6ab'           
+                     sh 'mvn sonar:sonar -Dsonar.projectKey=PROJETC_KEY_SONAR -Dsonar.host.url=http://172.20.2.128:9000 -Dsonar.login=1191c89568b3676f3db665894bfcc86a8efde6ab -Dsonar.exclusions=**/*.java'           
            }
          }
        // stage("Unit Test"){

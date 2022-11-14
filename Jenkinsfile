@@ -101,7 +101,12 @@ stage('Login to Docker Hub') {
 	        echo 'Push Image Completed'       
       }          
     } 
-  
+  stage ("docker compose down")
+  {
+      steps{
+      sh 'docker-compose down -d'
+      }
+  }
            stage("docker compose")
           {
               steps{

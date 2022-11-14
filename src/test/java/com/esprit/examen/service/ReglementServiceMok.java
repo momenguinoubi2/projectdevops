@@ -1,4 +1,4 @@
-package tn.esprit.rh.achat.services.reglement;
+package com.esprit.examen.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Test;

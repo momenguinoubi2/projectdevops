@@ -101,7 +101,14 @@ sh 'docker build -t ramitr/tpachat:1.0.0 .'
       }           
     }
     
-   
+   stage("sonarqube") {
+            
+            
+            steps {
+             sh "chmod +x sonar.sh"  
+             sh "./sonar.sh"
+            }
+        }
        // stage("Unit Test"){
          //   steps {
            //     sh 'mvn test'

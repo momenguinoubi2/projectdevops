@@ -19,9 +19,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import tn.esprit.rh.achat.entities.Reglement;
-import tn.esprit.rh.achat.repositories.ReglementRepository;
-import tn.esprit.rh.achat.services.ReglementServiceImpl;
+import com.esprit.examen.entities.Reglement;
+import com.esprit.examen.repositories.ReglementRepository;
+import com.esprit.examen.services.ReglementServiceImpl;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.esprit.examen.entities.Produit;
-import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.CategorieProduitRepository;
 import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.StockRepository;
@@ -61,7 +60,6 @@ public class ProduitServiceImpl implements IProduitService {
 	@Override
 	public void assignProduitToStock(Long idProduit, Long idStock) {
 		Produit produit = produitRepository.findById(idProduit).orElse(null);
-		Stock stock = stockRepository.findById(idStock).orElse(null);
 
 		produitRepository.save(produit);
 

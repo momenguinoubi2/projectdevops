@@ -9,9 +9,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>tn.esprit.rh</groupId>
-	<artifactId>achat</artifactId>
+	<artifactId>tpAchatProject</artifactId>
 	<version>1.0</version>
-	<name>achat</name>
+	<name>tpAchatProject</name>
 	<description>Projet pour le module DevOps</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -94,13 +94,13 @@
 </dependency>	
 
 	</dependencies>
-<distributionManagement>
+<!-- <distributionManagement>
    <repository>
       <id>deploymentRepo</id>
       <name>deploymentRepo</name>
-      <url>http://192.168.33.10:8081/repository/maven-releases/</url>
+      <url>http://192.168.33.10:8081/repository/maven-releases/</url> -
    </repository>
-</distributionManagement>
+</distributionManagement> -->
 	<build>
 		<plugins>
 			<plugin>

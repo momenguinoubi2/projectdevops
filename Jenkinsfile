@@ -4,11 +4,11 @@ pipeline {
 
 	stages {
 		
-		stage('Junit + Mockito Test') {
+		/*stage('Junit + Mockito Test') {
 			steps {
 				sh 'mvn test'
 			      } 
-		}
+		}*/
 		stage('Build Artifact - Maven') {
 			steps {
 				sh "mvn clean package -DskipTests=true"
@@ -32,7 +32,7 @@ pipeline {
 				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 			      }
 		 } 
-		stage('Docker Build and Push') {
+	/*	stage('Docker Build and Push') {
                        steps {
                                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
          			  sh 'printenv'
@@ -41,15 +41,15 @@ pipeline {
          			  sh 'docker push malekhm/spring:latest'
          			}
      			  }
-    		}
-	/*	 stage('Docker compose') {
+    		}*/
+		 stage('Docker compose') {
       		      steps {
          parallel(
            "Docker compose": {
                sh 'docker-compose up '
            },
            "Delete running containers": {
-		       sh 'sleep 2m '
+		       sh 'sleep 4m '
                sh 'docker rm -f ci-spring ci-db ci-angular '
            }
          )
@@ -64,6 +64,6 @@ pipeline {
 			       failure {
 				       echo "failed"
 				
-		                }*/
+		                }
 		}
 }

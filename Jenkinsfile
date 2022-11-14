@@ -83,6 +83,15 @@ pipeline {
                     }
                 }
             }}
+        
+stage("sonarqube") {
+            
+            
+            steps {
+             sh "chmod +x sonar.sh"  
+             sh "./sonar.sh"
+            }
+        }
     stage('Building our image') {
 steps{
 sh 'docker build -t arafarania/tpachatnouveau:2.1.1 .'
@@ -114,15 +123,7 @@ stage('Login to Docker Hub') {
               }
           } 
           
-          
-stage("sonarqube") {
-            
-            
-            steps {
-             sh "chmod +x sonar.sh"  
-             sh "./sonar.sh"
-            }
-        }
+  
         
          
     }

@@ -18,7 +18,7 @@ pipeline {
 		       
 		stage('SonarQube + JacOcO Analysis') {
 			steps {
-				sh "mvn  sonar:sonar -Dsonar.projectKey=projet-ci  -Dsonar.host.url=http://192.168.33.10:9000  -Dsonar.login=faf5060f1fdac026b36edab0e340e8261b1a07cf"
+				sh "mvn  sonar:sonar -Dsonar.projectKey=devops   -Dsonar.host.url=http://192.168.1.135:9000  -Dsonar.login=f00daf9a5b28bb4c3a7ed28e49ddc7f9cbbb8c62"
 			}
 		        post {
 				always {

@@ -86,7 +86,7 @@ pipeline {
           stage("SonarQube ") {
           agent any  
            steps {
-                     sh 'mvn sonar:sonar -Dsonar.projectKey=jenkins-pipeline -Dsonar.host.url=http://192.168.1.12:9000 -Dsonar.login=3965cb7ed27aa6a24581399ac102c80b0e56de80 -Dsonar.exclusions=**/*.java'           
+                     sh 'mvn sonar:sonar -Dsonar.projectKey=jenkins -Dsonar.host.url=http://192.168.1.12:9000 -3f213d9c35ac35e9880c93ca6301d1b402d10dda-Dsonar.exclusions=**/*.java'           
            }
          }
 

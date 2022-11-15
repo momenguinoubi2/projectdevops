@@ -17,8 +17,8 @@ services:
     container_name: sonarqube
    
     ports:
-      - "9000:9000"
-      - "9092:9092"
+      - "9009:9009"
+      
     volumes:
       - sonarqube_conf:/opt/sonarqube/conf
       - sonarqube_data:/opt/sonarqube/data

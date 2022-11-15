@@ -110,14 +110,12 @@ stage('Login to Docker Hub') {
                   sh'docker-compose up -d'
               }
           } 
-          stage("sonarqube") {
-            
-            
-            steps {
-             sh "chmod +x sonar.sh"  
-             sh "./sonar.sh"
-            }
-        }
+         stage("SonarQube ") {
+          agent any  
+           steps {
+                     sh 'mvn sonar:sonar -Dsonar.projectKey=jenkins-pipeline -Dsonar.host.url=http://192.168.1.12:9000 -Dsonar.login=3965cb7ed27aa6a24581399ac102c80b0e56de80 -Dsonar.exclusions=**/*.java'           
+           }
+         }
   
         
          

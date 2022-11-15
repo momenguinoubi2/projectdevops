@@ -13,11 +13,11 @@ services:
     volumes:
       - db:/var/lib/mysql
  sonarqube:
-    image: sonarqube:lts-community
+    image: sonarqube:8.9.7-community
     container_name: sonarqube
    
     ports:
-      - "9000:9000"
+      - "9002:9002"
       
     volumes:
       - sonarqube_conf:/opt/sonarqube/conf

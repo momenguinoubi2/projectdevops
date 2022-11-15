@@ -84,14 +84,7 @@ pipeline {
                 }
             }}
         
-stage("sonarqube") {
-            
-            
-            steps {
-             sh "chmod +x sonar.sh"  
-             sh "./sonar.sh"
-            }
-        }
+
     stage('Building our image') {
 steps{
 sh 'docker build -t arafarania/tpachatnouveau:2.1.1 .'
@@ -110,19 +103,21 @@ stage('Login to Docker Hub') {
 	        echo 'Push Image Completed'       
       }          
     } 
-  stage ("docker compose down")
-  {
-      steps{
-      sh 'docker-compose down --remove-orphans'
-      }
-  }
+
            stage("docker compose")
           {
               steps{
                   sh'docker-compose up -d'
               }
           } 
-          
+          stage("sonarqube") {
+            
+            
+            steps {
+             sh "chmod +x sonar.sh"  
+             sh "./sonar.sh"
+            }
+        }
   
         
          

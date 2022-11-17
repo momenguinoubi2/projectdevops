@@ -22,7 +22,7 @@ pipeline {
                         url : 'https://github.com/momenguinoubi2/projectdevops.git';
                 }
             }
-             stage('JUnit/Mockito') {
+             stage('test') {
             steps {
                
                  sh 'mvn test'

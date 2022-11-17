@@ -22,13 +22,7 @@ pipeline {
                         url : 'https://github.com/momenguinoubi2/projectdevops.git';
                 }
             }
-             stage('test') {
-            steps {
-               
-                 sh 'mvn test'
-                }
-            
-        }
+             
 
         stage("mvn build") {
             steps {

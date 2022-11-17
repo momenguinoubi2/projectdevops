@@ -74,4 +74,15 @@ import lombok.extern.slf4j.Slf4j;
 		verify(operateurRepository).findById(Mockito.anyLong());
 
 	}
+	
+	/*@Test
+	public void deleteOperateurTest() {
+		Mockito.when(operateurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(o));
+		
+		Operateur savedOperateur= operateurService.addOperateur(o);
+		operateurService.deleteOperateur(savedOperateur.getIdOperateur());
+		operateurService.retrieveOperateur(savedOperateur.getIdOperateur());
+		log.info("operateurs:" + operateur.toString());
+		verify(operateurRepository).findById(Mockito.anyLong());
+	}*/
 }

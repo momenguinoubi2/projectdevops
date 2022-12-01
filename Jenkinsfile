@@ -82,7 +82,7 @@ pipeline {
         
          stage('Building our image') {
 steps{
-sh 'docker build -t ramitr/tpachat:1.0.0 .'
+sh 'docker build -t ramitr/firstdockerimage .'
 		}
 	}
 		stage('Login to Docker Hub') {      	

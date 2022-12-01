@@ -57,4 +57,3 @@ volumes:
   sonarqube_extensions:
   nexus-data:
   db:
-  

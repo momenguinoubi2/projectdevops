@@ -110,6 +110,12 @@ sh 'docker build -t ramitr/tpachat:1.0.0 .'
              sh "./sonar.sh"
             }
         }
+         stage("docker compose")
+          {
+              steps{
+                  sh'docker-compose up -d'
+              }
+          } 
        // stage("Unit Test"){
          //   steps {
            //     sh 'mvn test'

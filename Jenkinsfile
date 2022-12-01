@@ -97,17 +97,25 @@ sh 'docker build -t ramitr/firstdockerimage .'
       steps{      sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p ${DOCKERHUB_CREDENTIALS_PSW} ${DOCKERHUB_CREDENTIALS_REPOSITORY} '        
                    		
 	echo 'Login Completed'                              
-	sh 'docker push ramitr/tpachat:1.0.0'         
+	sh 'docker push ramitr/firstdockerimage'         
 	       echo 'Push Image Completed'       
       }           
     }
+    stage("docker compose")
+          {
+              steps{
+                  sh'docker-compose up -d'
+              }
+          } 
     
-    stage("SonarQube Analysis") {
-          agent any  
-           steps {
-                     sh 'mvn sonar:sonar -Dsonar.projectKey=PROJETC_KEY_SONAR -Dsonar.host.url=http://172.20.2.128:9000 -Dsonar.login=1191c89568b3676f3db665894bfcc86a8efde6ab -Dsonar.exclusions=**/*.java'           
-           }
-         }
+    stage("sonarqube") {
+            
+            
+            steps {
+             sh "chmod +x sonar.sh"  
+             sh "./sonar.sh"
+            }
+        }
        // stage("Unit Test"){
          //   steps {
            //     sh 'mvn test'
